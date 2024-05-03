@@ -28,7 +28,7 @@ Friday
 Saturday
 
 10 00 AM - 07:00 PM
--Social Media Links:
+- Social Media Links:
 Instagram: https://www.instagram.com/_luscious.hair/
--Reviews Count: Reviews count not found
+- Reviews Count: Reviews count not found
 Reviews:
