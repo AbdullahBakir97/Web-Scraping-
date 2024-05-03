@@ -1,8 +1,8 @@
 ## Result: 
-Salon Name: Luscious Hair
-Location: 737 Washington Dr, Arlington, 76011
-Phone Number: (510) 384-2856
-Work Hours:
+- Salon Name: Luscious Hair
+- Location: 737 Washington Dr, Arlington, 76011
+- Phone Number: (510) 384-2856
+- Work Hours:
 Sunday
                          Closed
 Monday
@@ -28,7 +28,7 @@ Friday
 Saturday
 
 10 00 AM - 07:00 PM
-Social Media Links:
+-Social Media Links:
 Instagram: https://www.instagram.com/_luscious.hair/
-Reviews Count: Reviews count not found
+-Reviews Count: Reviews count not found
 Reviews:
