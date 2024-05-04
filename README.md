@@ -52,52 +52,53 @@
 - Reviews Count: 7
 - Average Rating: 5.0
 - Reviews:
-- Review 1:
-- Reviewer: Reviewer name not found
-- Date: Review date not found
-- Review: LITERALLY IN LOVEEEEEE WITH MY HAIR, i luv her and she’s soooo nice <3333 will be back again 100000/10
-- Service: Smedium Bohemian Knotless ( short )
-- Staffer: Tajanae Clay
-
-- Review 2:
-- Reviewer: Reviewer name not found
-- Date: Review date not found
-- Review: Great service
-- Service: Starter locs
-- Staffer: Tajanae Clay
-
-- Review 3:
-- Reviewer: Reviewer name not found
-- Date: Review date not found
-- Review: I love my hair thank you girl ❤️
-- Service: Silk press
-- Staffer: Tajanae Clay
-
-- Review 4:
-- Reviewer: Reviewer name not found
-- Date: Review date not found
-- Review: I think Nae did an amazing job. Very respectful and kind and welcoming. We laughed and she did a good job braiding my hair, I will most definitely be ...back! And she’s a fast braider! 🥰🥰  Show more
-- Service: Medium Knotless Braids
-- Staffer: Tajanae Clay
-
-- Review 5:
-- Reviewer: Reviewer name not found
-- Date: Review date not found
-- Review: Really happy with my silk press! Deff recommend 👌
-- Service: Silk press
-- Staffer: Tajanae Clay
-
-- Review 6:
-- Reviewer: Reviewer name not found
-- Date: Review date not found
-- Review: Best in the bay thanks for doing my hair with love🔥🔥
-- Service: Loc Retwist
-- Staffer: Tajanae Clay
-
-- Review 7:
-- Reviewer: Reviewer name not found
-- Date: Review date not found
-- Review: 🔥🔥I had been looking for braids all in the area and was blessed to find LusciousHair. Very welcoming and also personable experience. and Since I’ve ...hopped out the chair Brand New, I have been complimented since. So I’ll be back!  Show more
-- Service: Men's 2 Braids
-- Staffer: Tajanae Clay
-
+  - Review 1:
+  - Reviewer: Reviewer name not found
+  - Date: Review date not found
+  - Review: LITERALLY IN LOVEEEEEE WITH MY HAIR, i luv her and she’s soooo nice <3333 will be back again 100000/10
+  - Service: Smedium Bohemian Knotless ( short )
+  - Staffer: Tajanae Clay
+  
+  - Review 2:
+  - Reviewer: Reviewer name not found
+  - Date: Review date not found
+  - Review: Great service
+  - Service: Starter locs
+  - Staffer: Tajanae Clay
+  
+  - Review 3:
+  - Reviewer: Reviewer name not found
+  - Date: Review date not found
+  - Review: I love my hair thank you girl ❤️
+  - Service: Silk press
+  - Staffer: Tajanae Clay
+  
+  - Review 4:
+  - Reviewer: Reviewer name not found
+  - Date: Review date not found
+  - Review: I think Nae did an amazing job. Very respectful and kind and welcoming. We laughed and she did a good job braiding my hair, I will most definitely be ...back! And she’s a fast braider! 🥰🥰  Show more
+  - Service: Medium Knotless Braids
+  - Staffer: Tajanae Clay
+  
+  - Review 5:
+  - Reviewer: Reviewer name not found
+  - Date: Review date not found
+  - Review: Really happy with my silk press! Deff recommend 👌
+  - Service: Silk press
+  - Staffer: Tajanae Clay
+  
+  - Review 6:
+  - Reviewer: Reviewer name not found
+  - Date: Review date not found
+  - Review: Best in the bay thanks for doing my hair with love🔥🔥
+  - Service: Loc Retwist
+  - Staffer: Tajanae Clay
+  
+  - Review 7:
+  - Reviewer: Reviewer name not found
+  - Date: Review date not found
+  - Review: 🔥🔥I had been looking for braids all in the area and was blessed to find LusciousHair. Very welcoming and also personable experience. and Since I’ve ...hopped out the chair Brand New, I have been complimented since. So I’ll be back!  Show more
+  - Service: Men's 2 Braids
+  - Staffer: Tajanae Clay
+  
+  
