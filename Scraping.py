@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 
 def scrape_salon_data(url):
     # Send a GET request to the URL
@@ -19,16 +20,17 @@ def scrape_salon_data(url):
         location = location_element.get_text(strip=True) if location_element else "Location not found"
         
         # Extract service names and prices
+        parent_div = soup.select_one('#pageSection > div:nth-child(6) > div')
+
+        # Find all the service items within the parent div
+        service_items = parent_div.select('ul > li > div > ul:nth-child(1) > li')
+
+        # Iterate over each service item to extract service name and price
         services = []
-        service_containers = soup.select('#pageSection > div:nth-child(6) > div > ul > li > div > ul > li > div')
-        for container in service_containers:
-            service_name_element = container.select_one('div.purify_aIF50SidLa4hohq9cO8NHw\=\= > h3')
-            service_name = service_name_element.text.strip() if service_name_element else "Service name not found"
-
-            price_element = container.select_one('div.purify_D1SZtxyq0LT9u5Tm8cMYuw\=\= > div > div > div.purify_lPTOnTJKdGtFsWiIA3TUBA\=\= > div:nth-child(1) > div')
-            price = price_element.text.strip() if price_element else "Price not found"
-
-            services.append({'Service': service_name, 'Price': price})
+        for item in service_items:
+            service_name = item.find('h3', {'data-testid': 'service-name'}).get_text(strip=True)
+            service_price = item.find('div', {'data-testid': 'service-price'}).get_text(strip=True)
+            services.append({'Service': service_name, 'Price': service_price})
 
         
         # Extract salon work images
@@ -59,25 +61,57 @@ def scrape_salon_data(url):
         else:
             social_media_links = "Social media links not found"
 
-        print("Social Media Links:")
-        if isinstance(social_media_links, dict):
-            for platform, link in social_media_links.items():
-                print(f"{platform}: {link}")
-        else:
-            print(social_media_links)
 
         
-        # Extract reviews count
-        review_count_div = soup.find('div', class_='purify_aNo2rKM2GaqragdL24RFJA== purify_Sardy6hfiet162IZ2pYFPA== purify_m9mNOPjpHD0tNTW6GC+hEw==')
-        review_count_text = review_count_div.get_text()
+        # Extract reviews count and average rating
+        review_div = soup.find("div", class_="purify_VXAITtHvgDHJSpiutS+aCQ==")
+        review_count_text = review_div.find("div", class_="purify_aNo2rKM2GaqragdL24RFJA==").text
+        review_count = int(re.search(r'\d+', review_count_text).group())
+        average_rating_text = review_div.find("div", class_="purify_lZvWIWxIpgyX2b3dr9or0A==").text
+        average_rating = float(re.search(r'\d+\.\d+', average_rating_text).group())
         
-        # Extract every review
+        # Find and extract individual review ratings
+
+        # Extract all reviews
+        review_items = soup.find_all('div', {'data-testid': 'review-item'})
+
         reviews = []
-        review_elements = soup.select('#reviews-section > div.purify_6I9ICr0-qNOJfxFM4x purify_4JysCXCgTMjx Y9GX0xPjg')
-        for review_element in review_elements:
-            review_text = review_element.get_text(strip=True)
-            reviews.append(review_text)
+        for item in review_items:
+            # Extract reviewer name
+            reviewer_and_date_div = soup.find('div', {'class': 'purify_vWHLz7KKXvW-ACHxCe5XkQ=='})
         
+            # Extract reviewer name
+            reviewer_name_element = reviewer_and_date_div.find('span', {'class': 'purify_HRlYZ9s5U73L+xgNWotErg=='})
+            reviewer_name = reviewer_name_element.text.strip() if reviewer_name_element else "Reviewer name not found"
+
+            # Extract review date
+            review_date_element = reviewer_and_date_div.find('span', {'class': 'purify_VsjLagY8Ojq+9Ze+lWDQGQ=='})
+            review_date = review_date_element.text.strip() if review_date_element else "Review date not found"
+
+            
+            # Extract review text
+            review_text_element = item.find('div', {'class': 'purify_1KV69VGQK1FO5206zDXt6w=='})
+            review_text = review_text_element.text.strip() if review_text_element else "Review text not found"
+
+            # Extract service name
+            service_name_element = item.find('span', {'data-testid': 'review-service'})
+            service_name = service_name_element.text.strip() if service_name_element else "Service name not found"
+
+            # Extract staffer name
+            staffer_name_element = item.find('span', {'data-testid': 'review-staffer'})
+            staffer_name = staffer_name_element.text.strip() if staffer_name_element else "Staffer name not found"
+
+            reviews.append({
+                'Reviewer': reviewer_name,
+                'Date': review_date,
+                'Review': review_text,
+                'Service': service_name,
+                'Staffer': staffer_name
+            })
+
+
+    
+            
         # Create dictionary to store all the data
         salon_data = {
             'Salon Name': salon_name,
@@ -85,10 +119,11 @@ def scrape_salon_data(url):
             'Services': services,
             'Salon Work Images': images,
             'Phone Number': phone_number,
-            'Work Hours': work_days_and_hours,  # Corrected variable name
+            'Work Hours': work_days_and_hours,
             'Social Media Links': social_media_links,
-            'Reviews Count': reviews_count,
-            'Reviews': reviews
+            'Reviews Count': review_count,
+            'Average Rating': average_rating,
+            'Reviews': reviews,
         }
 
         # Return the dictionary containing all the data
@@ -106,6 +141,9 @@ data = scrape_salon_data(salon_url)
 if data:
     print("Salon Name:", data['Salon Name'])
     print("Location:", data['Location'])
+    print("Services:")
+    for service in data['Services']:
+        print(f"  - {service['Service']}: {service['Price']}")
     print("Phone Number:", data['Phone Number'])
     print("Work Hours:")
     work_hours = data['Work Hours']
@@ -127,8 +165,15 @@ if data:
     else:
         print(data['Social Media Links'])  # Print the error message when social media links are not found
     print("Reviews Count:", data['Reviews Count'])
+    print("Average Rating:", data['Average Rating'])
     print("Reviews:")
-    for review in data['Reviews']:
-        print(review)
+    for idx, review in enumerate(data['Reviews']):
+        print(f"Review {idx+1}:")
+        print(f"Reviewer: {review['Reviewer']}")
+        print(f"Date: {review['Date']}")
+        print(f"Review: {review['Review']}")
+        print(f"Service: {review['Service']}")
+        print(f"Staffer: {review['Staffer']}")
+        print()
 else:
     print("Failed to retrieve salon data.")
