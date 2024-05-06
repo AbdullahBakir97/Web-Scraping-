@@ -1,5 +1,5 @@
 ## Result: 
-- alon Name: Luscious Hair
+- Salon Name: Luscious Hair
 - Location: 737 Washington Dr, Arlington, 76011
 - Services:
   - Traditional Sew in: $185.00
